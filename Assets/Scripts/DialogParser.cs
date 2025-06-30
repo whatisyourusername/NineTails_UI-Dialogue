@@ -97,16 +97,26 @@ public class DialogParser : MonoBehaviour
     // 다음 대사로 넘어가는 예시 (나중에 버튼에 연결)
     public void NextLine()
     {
-        currentIndex++;
-        if (currentIndex < dialogLines.Count)
+        if (currentIndex < dialogLines.Count - 1)
         {
+            currentIndex++;
             ShowLine(currentIndex);
         }
         else
         {
             Debug.Log("모든 대사 종료");
-            currentIndex = 0;
+        }
+    }
+    public void PreviousLine()
+    {
+        if (currentIndex > 0)
+        {
+            currentIndex--;
             ShowLine(currentIndex);
+        }
+        else
+        {
+            Debug.Log("첫 대사 출력 완료");
         }
     }
     void SetLocation(string location, int imgNum)
