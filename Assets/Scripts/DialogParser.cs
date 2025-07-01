@@ -9,14 +9,15 @@ using UnityEngine.UI;
 public class DialogLine
 {
     public int index;
-    public int charIndex;
     public string charName;
+    public int charIndex;
     public string imgName;
     public string dialog;
     public string animation;
     public string location;
     public string sound;
     public string bgmusic;
+    public string bgImg;
     public string extra1;
 }
 
@@ -47,23 +48,24 @@ public class DialogParser : MonoBehaviour
             string[] values = lines[i].Split(',');
 
             // CSV 필드가 누락되었을 경우 방지
-            while (values.Length < 10)
+            while (values.Length < 11)
             {
-                System.Array.Resize(ref values, 10);
+                System.Array.Resize(ref values, 11);
             }
 
             DialogLine line = new DialogLine
             {
                 index = int.Parse(values[0]),
-                charIndex = int.Parse(values[1]) - 1,
-                charName = values[2],
+                charName = values[1],
+                charIndex = int.Parse(values[2]) - 1,
                 imgName = values[3],
                 dialog = values[4].Replace("`", ","), // ` 를 ,로 변환
                 animation = values[5],
                 location = values[6],
                 sound = values[7],
                 bgmusic = values[8],
-                extra1 = values[9],
+                bgImg = values[9],
+                extra1 = values[10],
             };
 
             dialogLines.Add(line);

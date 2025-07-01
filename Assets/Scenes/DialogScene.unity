@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c01c90f9b49da74fb10def4f2e1bb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogData: {fileID: 4900000, guid: 037bbfda827b62b4384c8e0f819fd2f7, type: 3}
+  dialogData: {fileID: 4900000, guid: 14a2d17b4ce37314299df7f42ea8f37f, type: 3}
   charNameText: {fileID: 60897171}
   dialogText: {fileID: 1439676008}
   charImgs:
