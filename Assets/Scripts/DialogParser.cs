@@ -27,6 +27,9 @@ public class DialogParser : MonoBehaviour
     [SerializeField] private TextAsset dialogData;
     [SerializeField] private TextMeshProUGUI charNameText;
     [SerializeField] private TextMeshProUGUI dialogText;
+    [SerializeField] private GameObject dialogUI;
+    [SerializeField] private GameObject playerDialog;
+    [SerializeField] private TextMeshProUGUI playerDialogBox;
     [SerializeField] private Image[] charImgs = new Image[5];
 
     private List<DialogLine> dialogLines = new List<DialogLine>();
@@ -84,16 +87,32 @@ public class DialogParser : MonoBehaviour
 
         DialogLine line = dialogLines[index];
 
-        // 모든 이미지 비활성화 후 해당 인덱스만 활성화
-        for (int i = 0; i < charImgs.Length; i++)
+        if (line.charIndex == 0)
         {
-            charImgs[i].gameObject.SetActive(i == line.charIndex);
+            // 모든 이미지 비활성화
+            for (int i = 0; i < charImgs.Length; i++)
+            {
+                charImgs[i].gameObject.SetActive(false);
+            }
+
+            playerDialog.SetActive(true);
+            dialogUI.SetActive(false);
+            playerDialogBox.text = line.dialog;
         }
+        else
+        {
+            // 모든 이미지 비활성화 후 해당 인덱스만 활성화
+            for (int i = 0; i < charImgs.Length; i++)
+            {
+                charImgs[i].gameObject.SetActive(i == line.charIndex);
+            }
 
-        charNameText.text = line.charName;
-        dialogText.text = line.dialog;
-
-        SetLocation(line.location, line.charIndex);
+            playerDialog.SetActive(false);
+            dialogUI.SetActive(true);
+            charNameText.text = line.charName;
+            dialogText.text = line.dialog;
+            SetLocation(line.location, line.charIndex);
+        }
     }
 
     // 다음 대사로 넘어가는 예시 (나중에 버튼에 연결)
