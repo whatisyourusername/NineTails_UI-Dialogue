@@ -447,6 +447,7 @@ MonoBehaviour:
   - {fileID: 1085317038}
   - {fileID: 1732606621}
   - {fileID: 268075157}
+  foxName: "\uB625\uBA4D\uCDA9\uC774"
 --- !u!4 &313111314
 Transform:
   m_ObjectHideFlags: 0

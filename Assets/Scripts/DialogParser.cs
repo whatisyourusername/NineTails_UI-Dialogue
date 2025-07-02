@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using JetBrains.Annotations;
 
 // 데이터 구조 정의
 [System.Serializable]
@@ -31,6 +32,8 @@ public class DialogParser : MonoBehaviour
     [SerializeField] private GameObject playerDialog;
     [SerializeField] private TextMeshProUGUI playerDialogBox;
     [SerializeField] private Image[] charImgs = new Image[5];
+
+    [SerializeField] private string foxName;
 
     private List<DialogLine> dialogLines = new List<DialogLine>();
     private int currentIndex = 0;
@@ -62,7 +65,7 @@ public class DialogParser : MonoBehaviour
                 charName = values[1],
                 charIndex = int.Parse(values[2]) - 1,
                 imgName = values[3],
-                dialog = values[4].Replace("`", ","), // ` 를 ,로 변환
+                dialog = values[4].Replace("`", ",").Replace("구미호",foxName), // ` 를 ,로 변환
                 animation = values[5],
                 location = values[6],
                 sound = values[7],
